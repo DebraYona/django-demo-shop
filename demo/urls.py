@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from core.routers import router_core
+from shop.routers import router_shop
+from shop.views.order import AddProductToCartAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('core/', include(router_core.urls), name='core'),
+    path('shop/', include(router_shop.urls), name='shop'),
+    path('add-product/', AddProductToCartAPIView.as_view(), name='add-product'),
     path('api-auth/', include('rest_framework.urls'))
 ]

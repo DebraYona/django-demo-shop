@@ -2,8 +2,9 @@ from django.db import models
 
 
 class Product(models.Model):
-    categories = models.ManyToManyField(
-        'core.Category', verbose_name="categories"
+    category = models.ForeignKey(
+        'core.Category', verbose_name="category", on_delete=models.CASCADE,
+        db_index=True, related_name="category", blank=True, null=True,
     )
     brand = models.CharField(
         max_length=150,
@@ -19,6 +20,9 @@ class Product(models.Model):
     image = models.ImageField(
         blank=True, null=True, upload_to='inventory/products/images/',
         verbose_name="image"
+    )
+    price = models.DecimalField(
+        max_digits=6, decimal_places=2, default=0.0
     )
 
     class Meta:
