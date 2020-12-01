@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "63bea650-24a2-4b78-9d15-ff929d89ccfa",
+		"name": "arellano",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create order",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "debra",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "debra",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"total_amount\" :600.00,   \n   \"address\": \"lima peru\",\n   \"delivery_date\":\"2019-12-04\",\n   \n   \"client\" :1,\n   \"items_client\":[\n       {\n           \"product_id\":1,           \n           \"quantity\": 3,            \n           \"unit_price_amount\": 15,\n           \"total_amount\":45\n       },\n        {\n           \"product_id\":2,           \n           \"quantity\": 2,           \n           \"unit_price_amount\": 15,\n           \"total_amount\":30\n       }\n    ]\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/shop/order/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"shop",
+						"order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "debra",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "debra",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api-auth/login/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api-auth",
+						"login",
+						""
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "debra",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "debra",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add to cart",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "debra",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "debra",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"client\":1,\n    \"items_client\":[\n     {\n           \"product_id\":2,           \n           \"quantity\": 3,            \n           \"unit_price_amount\": 21,\n           \"total_amount\":21\n       }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/add-product/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"add-product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/core/category/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"core",
+						"category",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "client order ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/shop/order/?creation_date=&client=1&order_status=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"shop",
+						"order",
+						""
+					],
+					"query": [
+						{
+							"key": "creation_date",
+							"value": ""
+						},
+						{
+							"key": "client",
+							"value": "1"
+						},
+						{
+							"key": "order_status",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category and products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/core/category-detail/?ordering=product__name&product__name=",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"core",
+						"category-detail",
+						""
+					],
+					"query": [
+						{
+							"key": "ordering",
+							"value": "product__name"
+						},
+						{
+							"key": "product__name",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
