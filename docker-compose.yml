@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  elasticsearch:
+    image: 'bitnami/elasticsearch:latest'
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    volumes:
+      - elasticsearch_data:/bitnami/elasticsearch/data
+  db:
+    image: postgres:10
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=demo
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=demo
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  web:
+    build: .
+    env_file:
+      - ./.env.local
+    volumes:
+      - ./:/usr/src/app/
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    entrypoint: /entrypoint.sh
+    depends_on:
+      - db
+      - elasticsearch
+volumes:
+  postgres_data:
+    driver: local
+  elasticsearch_data:
