@@ -1,6 +1,7 @@
 
 from core.views.category import (
-    CategoryViewSet
+    CategoryViewSet,
+    CategoryAndProductViewSet
 )
 
 from core.views.product import (
@@ -9,5 +10,6 @@ from core.views.product import (
 
 __all__ = [
     'CategoryViewSet',
+    'CategoryAndProductViewSet',
     'ProductViewSet'
 ]

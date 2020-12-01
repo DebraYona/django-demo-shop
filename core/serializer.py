@@ -26,3 +26,11 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CategoryAndProductSerializer(serializers.ModelSerializer):
+    detail = ProductSerializer(many=True, read_only=True,)
+
+    class Meta:
+        model = Category
+        fields = ('id', 'name', 'detail','product')
+        depth = 1
+

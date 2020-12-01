@@ -4,7 +4,7 @@ from django.db import models
 class Product(models.Model):
     category = models.ForeignKey(
         'core.Category', verbose_name="category", on_delete=models.CASCADE,
-        db_index=True, related_name="category", blank=True, null=True,
+        db_index=True, related_name="product", blank=True, null=True,
     )
     brand = models.CharField(
         max_length=150,
